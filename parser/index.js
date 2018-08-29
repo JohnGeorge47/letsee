@@ -10,7 +10,7 @@ var knex = require('knex')({
   }
 });
 knex.schema
-  .createTable('player_detai', table => {
+  .createTable('player_data', table => {
     table.string('Year');
     table.string('Player');
     table.string('Pos');
@@ -40,12 +40,9 @@ knex.schema
         console.log(playerList);
         knex
           .insert(playerList)
-          .into('player_detai')
+          .into('player_data')
           .then(id => {
             console.log(id);
-          })
-          .finally(() => {
-            knex.destroy();
           });
       });
   });
