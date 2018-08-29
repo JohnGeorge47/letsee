@@ -12,20 +12,41 @@ var knex = require('knex')({
 knex.schema
   .createTable('player_detai', table => {
     table.string('Year');
-    table.string('Player').primary();
+    table.string('Player');
     table.string('Pos');
     table.string('HT');
     table.string('Team');
-    table.string('Selection Type');
+
     table.string('Nationality');
-    table.string('NBA Draft Status');
   })
   .then(() => {
-    console.log('ddd');
+    var stream = csv(['index', 'message']);
+    let playerList = [];
     fs.createReadStream('NBA-All-Star-Games.csv')
       .pipe(csv())
       .on('data', data => {
-        console.log(data);
+        let individualRow = {};
+        if (data.Player != '') {
+          individualRow.Year = data.Year;
+          individualRow.Player = data.Player;
+          individualRow.Team = data.Team;
+          individualRow.Nationality = data.Nationality;
+          individualRow.Pos = data.Pos;
+          individualRow['HT'] = data['HT'];
+          playerList.push(individualRow);
+        }
+      })
+      .on('end', () => {
+        console.log(playerList);
+        knex
+          .insert(playerList)
+          .into('player_detai')
+          .then(id => {
+            console.log(id);
+          })
+          .finally(() => {
+            knex.destroy();
+          });
       });
   });
 // fs.createReadStream('NBA-All-Star-Games.csv')
