@@ -46,14 +46,3 @@ knex.schema
           });
       });
   });
-// fs.createReadStream('NBA-All-Star-Games.csv')
-//   .pipe(csv())
-//   .on('headers', function(headerList) {
-//     let newHeaders = headerList.filter(header => {
-//       return header != '';
-//     });
-//     knex.schema.createTable('player_details', table => {
-//       table.string(Year);
-//       table.string(Player);
-//     });
-//   });
