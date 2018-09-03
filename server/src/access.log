@@ -29,3 +29,5 @@
 ::1 - - [03/Sep/2018:09:07:23 +0000] "POST /api/login HTTP/1.1" - - "-" "PostmanRuntime/7.2.0"
 ::1 - - [03/Sep/2018:09:09:25 +0000] "POST /api/login HTTP/1.1" - - "-" "PostmanRuntime/7.2.0"
 ::1 - - [03/Sep/2018:09:18:04 +0000] "POST /api/login HTTP/1.1" 200 31 "-" "PostmanRuntime/7.2.0"
+::1 - - [03/Sep/2018:10:51:50 +0000] "GET /api/teamnames HTTP/1.1" - - "-" "PostmanRuntime/7.2.0"
+::1 - - [03/Sep/2018:10:59:59 +0000] "GET /api/teamnames HTTP/1.1" 200 668 "-" "PostmanRuntime/7.2.0"
